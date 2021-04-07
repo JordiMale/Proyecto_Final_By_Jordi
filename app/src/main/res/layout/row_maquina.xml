@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="false"
+    android:layout_marginTop="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="78dp"
+        android:layout_height="260dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/Llamar_Maquina"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/llamada" />
+
+        <ImageView
+            android:id="@+id/IrGmaps"
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/lugar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="NOM CLIENT: "
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Nom_Client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="ADREÇA: "
+                android:textColor="#000000"
+                />
+
+            <TextView
+                android:id="@+id/Maquina_Adreça"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="CODI POSTAL: "
+                android:textColor="#000000"
+                />
+
+            <TextView
+                android:id="@+id/Maquina_Codi_Postal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="POBLACIÓ:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Població"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="TELEFONO:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Telefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="GMAIL:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="SERIE:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Numero_Serie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="FECHA: "
+                android:textColor="#000000"
+                />
+
+            <TextView
+                android:id="@+id/Maquina_DATA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="TIPUS:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Tipus_Maquina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_marginLeft="2dp"
+                android:autoSizeTextType="uniform"
+                android:text="ZONA:"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/Maquina_Zona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+               />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="78dp"
+        android:layout_height="260dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/Gmail_Maquina"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/gmail" />
+
+        <ImageView
+            android:id="@+id/Basura_Maquina"
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/dustbin" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_Gestion_Maquines"
+        android:icon="@drawable/gestion"
+        android:title="Gestión" />
+
+    <item
+        android:id="@+id/navigation_Tipus_Maquines"
+        android:icon="@drawable/tipus"
+        android:title="Tipus" />
+
+    <item
+        android:id="@+id/navigation_Zones"
+        android:icon="@drawable/radar"
+        android:title="Zonas" />
+
+    <item
+        android:id="@+id/GoogleFragment"
+        android:icon="@drawable/gmaps"
+        android:title="GMaps"/>
+
+</menu>

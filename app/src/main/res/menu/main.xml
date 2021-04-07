@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Filtrar_Serie"
+        android:icon="@drawable/selectivo"
+        android:title="No orednado"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView">
+
+    </item>
+
+    <item
+        android:id="@+id/Todo"
+        android:orderInCategory="100"
+        android:title="No orednado"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/OrdenarMix"
+        android:orderInCategory="100"
+        android:title="Ordenar Mix"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/OrdenarPorNombre"
+        android:orderInCategory="100"
+        android:title="Ordenar per Nom"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/OrdenarPorZona"
+        android:orderInCategory="100"
+        android:title="Ordenar per Zona"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/OrdenarPorPoblacion"
+        android:orderInCategory="100"
+        android:title="Ordenar per Població"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/OrdenarPorAdreça"
+        android:orderInCategory="100"
+        android:title="Ordenar per Adreça"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/OrdenarPorData"
+        android:orderInCategory="100"
+        android:title="Ordenar per Data"
+        app:showAsAction="never" />
+</menu>

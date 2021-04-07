@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="?actionBarSize">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/Titulo_Añadir_Maquina"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:text="Añadir Maquina"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+
+
+        <EditText
+            android:id="@+id/Edit_text_Nombre_Cliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Nom"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_Adreça"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Adreça"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_CP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:hint="Codi Postal"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_Poblacio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Població"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_Telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:hint="Telèfon"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_Gmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Gmail"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <EditText
+            android:id="@+id/Edit_Text_Numero_Serie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Numero Serie"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Edit_Text_Data"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Data"
+                android:inputType="date" />
+
+
+            <ImageView
+                android:id="@+id/BuscarData"
+                android:layout_width="112dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/calendar" />
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:text="Tipo"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/Spinner_Tipo"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:text="Zona"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/Spinner_Zona"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Cancelar"
+                android:layout_width="186dp"
+                android:layout_height="70dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/btn_ripple"
+                android:fontFamily="@font/aclonica"
+                android:text="Cancelar"
+                android:textColor="#000000"
+                app:backgroundTint="@color/teal_200" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:id="@+id/btn_Acceptar"
+                android:layout_width="186dp"
+                android:layout_height="70dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/btn_ripple"
+                android:fontFamily="@font/aclonica"
+                android:text="Aceptar"
+                android:textColor="#000000"
+                app:backgroundTint="@color/teal_200" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>

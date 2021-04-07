@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="?actionBarSize">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/Titulo_Añadir_Zona"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:text="Añadir Zona"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+        <EditText
+            android:id="@+id/Edt_Nom_Zona"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Zona"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_Cancelar_Zona"
+                android:layout_width="186dp"
+                android:layout_height="70dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/btn_ripple"
+                android:fontFamily="@font/aclonica"
+                android:text="Cancelar"
+                android:textColor="#000000"
+                app:backgroundTint="@color/teal_200" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:id="@+id/btn_Acceptar_Zona"
+                android:layout_width="186dp"
+                android:layout_height="70dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/btn_ripple"
+                android:fontFamily="@font/aclonica"
+                android:text="Aceptar"
+                android:textColor="#000000"
+                app:backgroundTint="@color/teal_200" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>

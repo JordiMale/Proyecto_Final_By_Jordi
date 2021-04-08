@@ -44,10 +44,6 @@ public class GoogleFragment extends Fragment{
                     e.printStackTrace();
                 }
 
-
-
-
-
             LatLng Posicion = new LatLng(Dire);
             googleMap.addMarker(new MarkerOptions().position(Posicion).title("Marker in" + NomZona));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));

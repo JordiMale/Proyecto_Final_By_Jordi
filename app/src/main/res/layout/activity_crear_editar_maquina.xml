@@ -155,10 +155,24 @@
             android:text="Tipo"
             android:textAlignment="center" />
 
-        <Spinner
-            android:id="@+id/Spinner_Tipo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp" />
+            android:layout_height="47dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/Añadir_Tipo_En_Crear_Maquina"
+                android:layout_width="112dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/tipus" />
+
+            <Spinner
+                android:id="@+id/Spinner_Tipo"
+                android:layout_width="320dp"
+                android:layout_height="44dp" />
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
@@ -173,10 +187,25 @@
             android:text="Zona"
             android:textAlignment="center" />
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:orientation="horizontal">
+
         <Spinner
             android:id="@+id/Spinner_Zona"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="44dp" />
+
+        <ImageView
+            android:id="@+id/Añadir_Zona_En_Crear_Maquina"
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/radar" />
+
+    </LinearLayout>
 
         <Space
             android:layout_width="match_parent"

@@ -2,6 +2,7 @@ package com.example.proyecto_final_by_jordi.ui.Gestion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,7 @@ import com.example.proyecto_final_by_jordi.BD.Datasource;
 import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.Tipo;
 import com.example.proyecto_final_by_jordi.Zona;
+import com.example.proyecto_final_by_jordi.ui.Tipus_Maqiunes.CrearTipo;
 
 import org.w3c.dom.Text;
 
@@ -73,6 +77,8 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
     Button BtnCancelar;
     Button BtnAcceptar;
+    ImageView IrTipo;
+    ImageView IrZona;
 
 
     public void MostrarSpinner() {
@@ -255,8 +261,19 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         BtnCancelar = findViewById(R.id.btn_Cancelar);
         BtnAcceptar = findViewById(R.id.btn_Acceptar);
+        IrTipo = findViewById(R.id.Añadir_Tipo_En_Crear_Maquina);
+        IrZona = findViewById(R.id.Añadir_Zona_En_Crear_Maquina);
 
         MostrarSpinner();
+
+
+        IrTipo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CrearTipo();
+            }
+        });
+
 
 
         BtnData.setOnClickListener(new View.OnClickListener() {
@@ -312,6 +329,114 @@ public class CrearEditarMaquina extends AppCompatActivity {
     }
 
 
+    //Para crear un tipo dentro de una maquina
+    private void CrearTipo() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(CrearEditarMaquina.this);
+
+        LayoutInflater layout = this.getLayoutInflater();
+
+        View vista = layout.inflate(R.layout.activity_crear_tipo, null);
+        setContentView(vista);
+
+
+        AlertDialog dialog = builder.create();
+
+
+
+
+        Button BtnCancelar_Tipo = findViewById(R.id.btn_Cancelar_Tipo);
+        Button BtnAcceptar_Tipo = findViewById(R.id.btn_Acceptar_Tipo);
+
+        BtnAcceptar_Tipo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                acceptrcambiosTipo();
+                return;
+
+            }
+        });
+
+        BtnCancelar_Tipo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                return;
+
+            }
+        });
+
+        dialog.show();
+
+    }
+
+
+    private void acceptrcambiosTipo() {
+
+            EditText EtNom_Tipo = findViewById(R.id.Edt_Nom_Tipo);
+
+            RadioButton RadioRojo = (RadioButton)findViewById(R.id.RadioRojo);
+            RadioButton RadioAzul = (RadioButton)findViewById(R.id.RadioAzul);
+            RadioButton RadioAmarillo = (RadioButton)findViewById(R.id.RadioAmarillo);
+            RadioButton RadioNaranja = (RadioButton)findViewById(R.id.RadioNaranja);
+            RadioButton RadioRosa = (RadioButton)findViewById(R.id.RadioRosa);
+            RadioButton RadioLila = (RadioButton)findViewById(R.id.RadioLila);
+            RadioButton RadioVerde = (RadioButton)findViewById(R.id.RadioVerde);
+            RadioButton RadioTurquesa = (RadioButton)findViewById(R.id.RadioTurquesa);
+
+            String GuardarRadio = "";
+            if (RadioRojo.isChecked()){
+                GuardarRadio = "Rojo";
+            }else{
+                if(RadioAzul.isChecked()){
+                    GuardarRadio = "Azul";
+                }else{
+                    if(RadioAmarillo.isChecked()){
+                        GuardarRadio = "Amarillo";
+                    }else{
+                        if(RadioNaranja.isChecked()){
+                            GuardarRadio = "Naranja";
+                        }else{
+                            if(RadioRosa.isChecked()){
+                                GuardarRadio = "Rosa";
+                            }else{
+                                if(RadioLila.isChecked()){
+                                    GuardarRadio = "Lila";
+                                }else{
+                                    if(RadioVerde.isChecked()){
+                                        GuardarRadio = "Verde";
+                                    }else{
+                                        if(RadioTurquesa.isChecked()){
+                                            GuardarRadio = "Turquesa";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            String Nom_Tipo = EtNom_Tipo.getText().toString();
+            if(Nom_Tipo.equals("")){
+                Toast.makeText(this,"No has introduït un nom",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
+            bd.Crear_Tipo(Nom_Tipo,GuardarRadio);
+
+
+
+
+
+        }
+
+
+
+
+    //Para la maquina
     private void cargarDatos() {
         Cursor Cursor_Maquina = bd.EditarMaquinaId(idTask);
         Cursor_Maquina.moveToFirst();

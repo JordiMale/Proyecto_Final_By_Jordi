@@ -9,69 +9,39 @@
     >
 
 
-
     <LinearLayout
-        android:layout_width="221dp"
-        android:layout_height="wrap_content"
+        android:layout_width="314dp"
+        android:layout_height="54dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:autoSizeTextType="uniform"
-                android:text="ID: "
-                android:textColor="#000000"/>
-
-            <TextView
-                android:id="@+id/Id_Tipo_Maquina"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2dp"
-                android:autoSizeTextType="uniform"
-                android:text="NOM TIPO: "
-                android:textColor="#000000"
-                />
 
             <TextView
                 android:id="@+id/Nom_Tipo_Maquina"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="314dp"
+                android:layout_height="52dp"
                 android:layout_marginLeft="2dp"
                 android:autoSizeTextType="uniform"
+                android:fontFamily="@font/aclonica"
+                android:textAlignment="center"
 
-                />
+
+                android:textColor="#000000" />
         </LinearLayout>
-
 
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/Basura_Tipo_Maquina"
-        android:layout_width="35dp"
-        android:layout_height="72dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/dustbin" />
+        android:layout_width="99dp"
+        android:layout_height="50dp"
 
+        app:srcCompat="@drawable/dustbin" />
 
 
 </LinearLayout>

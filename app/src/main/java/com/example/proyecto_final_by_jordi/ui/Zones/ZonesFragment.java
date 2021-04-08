@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.proyecto_final_by_jordi.BD.Datasource;
 import com.example.proyecto_final_by_jordi.R;
@@ -36,11 +37,10 @@ public class ZonesFragment extends Fragment {
     private adapterTodoIcon scTasks;
 
     private static String[] from = new String[]{
-            Datasource.IDGENERAL,
+           // Datasource.IDGENERAL,
             Datasource.NOMZONA,};
 
     private static int[] to = new int[]{
-            R.id.Id_Zona,
             R.id.Nom_Zona,};
 
 
@@ -175,6 +175,11 @@ public class ZonesFragment extends Fragment {
 
     }
 
+    private void GmapsZona(int id){
+
+        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Zones_to_GoogleFragment);
+    }
+
 
 
     class adapterTodoIcon extends android.widget.SimpleCursorAdapter {
@@ -208,6 +213,19 @@ public class ZonesFragment extends Fragment {
                     Cursor linia = (Cursor) getItem(position);
 
                     oTodoListIcon.DeleteZona(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
+                }
+            });
+
+            //Imagen para ir a gmaps la zona.
+            ImageView BtnGmaps = (ImageView) view.findViewById(R.id.Gmaps_Zona_Maquina);
+            BtnGmaps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    // Carrego la linia del cursor de la posició.
+                    Cursor linia = (Cursor) getItem(position);
+
+                    oTodoListIcon.GmapsZona(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
                 }
             });
 

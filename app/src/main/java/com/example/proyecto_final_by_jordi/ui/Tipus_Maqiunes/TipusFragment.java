@@ -40,11 +40,10 @@ public class TipusFragment extends Fragment {
     private SimpleCursorAdapter scTasks;
 
     private static String[] from = new String[]{
-            Datasource.IDGENERAL,
+            //Datasource.IDGENERAL,
             Datasource.NOMMAQUINA,};
 
     private static int[] to = new int[]{
-            R.id.Id_Tipo_Maquina,
             R.id.Nom_Tipo_Maquina,};
 
     Button btn_Ir_Crear_Tipo;

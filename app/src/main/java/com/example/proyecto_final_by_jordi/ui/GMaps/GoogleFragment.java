@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,16 +20,39 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+
 public class GoogleFragment extends Fragment{
 
+    String NomZona = "";
+
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
-
-
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+           /*
+            Geocoder Geoco = new Geocoder(getContext());
+            List<Address>Dire = null;
+            int  Resultado = 1;
+            if(NomZona == null){
+                NomZona = "Mataró";
+            }
+                try {
+                    Dire = Geoco.getFromLocationName(NomZona, Resultado);
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+
+
+
+
+
+            LatLng Posicion = new LatLng(Dire);
+            googleMap.addMarker(new MarkerOptions().position(Posicion).title("Marker in" + NomZona));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+
+            */
         }
     };
 
@@ -45,6 +70,7 @@ public class GoogleFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        NomZona = getArguments().getString("id");
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {

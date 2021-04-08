@@ -9,7 +9,11 @@
         android:id="@+id/navigation_Gestion_Maquines"
         android:name="com.example.proyecto_final_by_jordi.ui.Gestion.GestionFragment"
         android:label="Gestión de Maquinas"
-        tools:layout="@layout/fragment_gestion" />
+        tools:layout="@layout/fragment_gestion" >
+        <action
+            android:id="@+id/action_navigation_Gestion_Maquines_to_GoogleFragment"
+            app:destination="@id/GoogleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_Tipus_Maquines"
@@ -21,11 +25,18 @@
         android:id="@+id/navigation_Zones"
         android:name="com.example.proyecto_final_by_jordi.ui.Zones.ZonesFragment"
         android:label="Zonas"
-        tools:layout="@layout/fragment_zones" />
+        tools:layout="@layout/fragment_zones" >
+        <action
+            android:id="@+id/action_navigation_Zones_to_GoogleFragment"
+            app:destination="@id/GoogleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/GoogleFragment"
         android:name="com.example.proyecto_final_by_jordi.ui.GMaps.GoogleFragment"
         android:label="Gmaps"
         tools:layout="@layout/fragment_google" />
+    <action
+        android:id="@+id/action_global_GoogleFragment"
+        app:destination="@id/GoogleFragment" />
 </navigation>

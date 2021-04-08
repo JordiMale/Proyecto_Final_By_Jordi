@@ -51,11 +51,10 @@ import java.util.zip.Inflater;
 
 import static android.app.Activity.RESULT_OK;
 
-public class GestionFragment extends Fragment{
+public class GestionFragment extends Fragment {
 
     private static int TASK_ADD = 1;
     private static int TASK_UPDATE = 2;
-
 
 
     private Datasource bd;
@@ -99,21 +98,18 @@ public class GestionFragment extends Fragment{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == TASK_ADD) {
-            if(resultCode==RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 // Carreguem tots els productes
                 ActualizarProductesMaquina();
             }
 
         }
         if (requestCode == TASK_UPDATE) {
-            if(resultCode==RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 ActualizarProductesMaquina();
             }
         }
     }
-
 
 
     @Override
@@ -154,7 +150,7 @@ public class GestionFragment extends Fragment{
     }
 
     @Override
-    public void onCreateOptionsMenu( Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         MenuItem Buscador = menu.findItem(R.id.Filtrar_Serie);
         SearchView searchView = (SearchView) Buscador.getActionView();
@@ -177,7 +173,7 @@ public class GestionFragment extends Fragment{
                         CursorFilt,
                         from,
                         to,
-                        1,GestionFragment.this);
+                        1, GestionFragment.this);
 
                 lv.setAdapter(scTasks);
 
@@ -188,7 +184,6 @@ public class GestionFragment extends Fragment{
 
 
     }
-
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -246,7 +241,7 @@ public class GestionFragment extends Fragment{
                 cursorTasks,
                 from,
                 to,
-                1,GestionFragment.this);
+                1, GestionFragment.this);
 
         lv = (ListView) v.findViewById(R.id.list1);
         lv.setAdapter(scTasks);
@@ -268,20 +263,20 @@ public class GestionFragment extends Fragment{
     private void AddMaquina() {
         Bundle bundle = new Bundle();
         idActual = -1;
-        bundle.putLong("id",idActual);
+        bundle.putLong("id", idActual);
 
         Intent intent = new Intent(getActivity(), CrearEditarMaquina.class);
         intent.putExtras(bundle);
-        startActivityForResult(intent,TASK_ADD);
+        startActivityForResult(intent, TASK_ADD);
 
     }
 
     //Actualiza  el listview de maquina.
     private void ActualizarProductesMaquina() {
         // Demanem totes les tasques
-         Cursor cursorTasks = bd.Todo_Maquina();
+        Cursor cursorTasks = bd.Todo_Maquina();
 
-        switch(FiltreAplicat){
+        switch (FiltreAplicat) {
             case TOT:
                 cursorTasks = bd.Todo_Maquina();
                 break;
@@ -312,7 +307,7 @@ public class GestionFragment extends Fragment{
     }
 
     //Elimina una maquina
-    private void DeleteMaquina(int Id){
+    private void DeleteMaquina(int Id) {
 
         // Pedimos confirmación
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -337,19 +332,19 @@ public class GestionFragment extends Fragment{
     private void updateTask(long id) {
 
         Bundle bundle = new Bundle();
-        bundle.putLong("id",id);
+        bundle.putLong("id", id);
 
         idActual = id;
 
 
         Intent i = new Intent(getActivity(), CrearEditarMaquina.class);
         i.putExtras(bundle);
-        startActivityForResult(i,TASK_UPDATE);
+        startActivityForResult(i, TASK_UPDATE);
 
     }
 
     //Lama al numero del producto
-    public void LlamarNumero(long id){
+    public void LlamarNumero(long id) {
 
         // Demanem totes les tasques
         Cursor Cursor_Maquina = bd.EditarMaquinaId(id);
@@ -360,11 +355,11 @@ public class GestionFragment extends Fragment{
 
         String Numero = Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.TELEFON));
 
-        if(!TextUtils.isEmpty(Numero)) {
+        if (!TextUtils.isEmpty(Numero)) {
             String dial = "tel:" + Numero;
             startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-        }else {
-            Toast.makeText(getContext(),"No hi ha un numero seleccionat",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "No hi ha un numero seleccionat", Toast.LENGTH_SHORT).show();
         }
         //final String EtTelefono = Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.TELEFON));
 
@@ -377,7 +372,7 @@ public class GestionFragment extends Fragment{
     }
 
     //Envia un gmail al email del producto.
-    public void EnviarGmail(long id){
+    public void EnviarGmail(long id) {
 
         Cursor Cursor_Maquina = bd.EditarMaquinaId(id);
 
@@ -394,7 +389,7 @@ public class GestionFragment extends Fragment{
 
         // Defino los Strings Email, Asunto y Mensaje con la función putExtra
         intent.putExtra(Intent.EXTRA_EMAIL,
-                new String[] { Gmail });
+                new String[]{Gmail});
         intent.putExtra(Intent.EXTRA_SUBJECT, Text + Numero_Serie);
 
 
@@ -416,18 +411,13 @@ public class GestionFragment extends Fragment{
 
     }
 
-    public void IrGmaps(long id){
+    public void IrGmaps(String  Nom) {
 
         Bundle bundle = new Bundle();
-        bundle.putLong("id",id);
+        bundle.putString("id", Nom);
 
-        idActual = id;
+        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Gestion_Maquines_to_GoogleFragment, bundle);
 
-
-        Intent i = new Intent(getActivity(), GoogleFragment.class);
-        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.GoogleFragment);
-        i.putExtras(bundle);
-        startActivityForResult(i,TASK_UPDATE);
 
     }
 
@@ -453,7 +443,6 @@ public class GestionFragment extends Fragment{
             Cursor linia = (Cursor) getItem(position);
 
 
-
             //Imagen para eliminar el stock, se redirige al metodo llamado deletemaquina, pasandole el id del cual el usuario ha pulsado.
             ImageView BtnEliminar = (ImageView) view.findViewById(R.id.Basura_Maquina);
             BtnEliminar.setOnClickListener(new View.OnClickListener() {
@@ -468,7 +457,6 @@ public class GestionFragment extends Fragment{
             });
 
 
-
             //Imagen para filtrar por fechas, se redirige al metodo alertidalog3, pasandole el id del que el usuario ha pulsado.
             ImageView btnGmaps = (ImageView) view.findViewById(R.id.IrGmaps);
             btnGmaps.setOnClickListener(new View.OnClickListener() {
@@ -478,10 +466,9 @@ public class GestionFragment extends Fragment{
                     // Carrego la linia del cursor de la posició.
                     Cursor linia = (Cursor) getItem(position);
 
-                    oTodoListIcon.IrGmaps(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
+                    oTodoListIcon.IrGmaps(linia.getString(linia.getColumnIndexOrThrow(Datasource.NOMZONA)));
                 }
             });
-
 
 
             //Imagen para llamar por eltelefono del producto
@@ -494,11 +481,9 @@ public class GestionFragment extends Fragment{
                     Cursor linia = (Cursor) getItem(position);
 
 
-                   oTodoListIcon.LlamarNumero(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
+                    oTodoListIcon.LlamarNumero(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
                 }
             });
-
-
 
 
             //Imagen para enviar un gmail.
@@ -514,8 +499,6 @@ public class GestionFragment extends Fragment{
                     oTodoListIcon.EnviarGmail(linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL)));
                 }
             });
-
-
 
 
             return view;

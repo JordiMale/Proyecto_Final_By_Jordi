@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -58,24 +59,28 @@ public class CrearEditarMaquina extends AppCompatActivity {
     boolean NotNullll;
     int IdZonaFinal;
 
-    ArrayList<Tipo>TipoList;
-    ArrayList<String>ListaTipo;
+    ArrayList<Tipo> TipoList;
+    ArrayList<String> ListaTipo;
     ArrayAdapter<String> AdaperTipo;
-    ArrayList<Integer>IntAuxTipo;
+    ArrayList<Integer> IntAuxTipo;
+    ArrayList<String>ListaTipoFinalEditar;
 
-    ArrayList<Zona>ZonaList;
-    ArrayList<String>ListaZona;
+    ArrayList<Zona> ZonaList;
+    ArrayList<String> ListaZona;
     ArrayAdapter<String> AdaperZona;
-    ArrayList<Integer>IntAuxZona;
+    ArrayList<Integer> IntAuxZona;
+    ArrayList<String>ListaZonaFinalEditar;
 
     Button BtnCancelar;
     Button BtnAcceptar;
 
 
-    public void MostrarSpinner(){
+    public void MostrarSpinner() {
 
         Cursor CursorSpinnerT = bd.Todo_Tipo();
         Cursor CursorSpinnerZ = bd.Todo_Zona();
+        Cursor CursorCojerMaquina = bd.EditarMaquinaId(idTask);
+        CursorCojerMaquina.moveToFirst();
 
         Tipo TipoObj;
 
@@ -84,22 +89,23 @@ public class CrearEditarMaquina extends AppCompatActivity {
         TipoList = new ArrayList<Tipo>();
         ListaTipo = new ArrayList<String>();
         IntAuxTipo = new ArrayList<Integer>();
+        ListaTipoFinalEditar = new ArrayList<String>();
 
         ZonaList = new ArrayList<Zona>();
         ListaZona = new ArrayList<String>();
         IntAuxZona = new ArrayList<Integer>();
+        ListaZonaFinalEditar = new ArrayList<String>();
 
 
-
-        while(CursorSpinnerT.moveToNext()){
-            int Id =  CursorSpinnerT.getInt(CursorSpinnerT.getColumnIndex(Datasource.IDGENERAL));
+        while (CursorSpinnerT.moveToNext()) {
+            int Id = CursorSpinnerT.getInt(CursorSpinnerT.getColumnIndex(Datasource.IDGENERAL));
             String NomTipus = CursorSpinnerT.getString(CursorSpinnerT.getColumnIndex(Datasource.NOMMAQUINA));
             TipoObj = new Tipo(Id, NomTipus);
             TipoList.add(TipoObj);
         }
 
-        while(CursorSpinnerZ.moveToNext()){
-            int Id =  CursorSpinnerZ.getInt(CursorSpinnerZ.getColumnIndex(Datasource.IDGENERAL));
+        while (CursorSpinnerZ.moveToNext()) {
+            int Id = CursorSpinnerZ.getInt(CursorSpinnerZ.getColumnIndex(Datasource.IDGENERAL));
             String NomZona = CursorSpinnerZ.getString(CursorSpinnerZ.getColumnIndex(Datasource.NOMZONA));
             ZonaObj = new Zona(Id, NomZona);
             ZonaList.add(ZonaObj);
@@ -107,22 +113,62 @@ public class CrearEditarMaquina extends AppCompatActivity {
         CursorSpinnerT.close();
         CursorSpinnerZ.close();
 
-        for(int i = 0; i < TipoList.size();i++){
+        //Esto es creando una maquina el spinner
+        if(idTask == -1){
+            for (int i = 0; i < TipoList.size(); i++) {
 
-            ListaTipo.add(TipoList.get(i).getNom_Tipo());
-            IntAuxTipo.add(TipoList.get(i).getId());
+            ListaTipo.add(TipoList.get(i).getId() + "- " + TipoList.get(i).getNom_Tipo());
+
         }
 
-        for(int i = 0; i < ZonaList.size();i++){
+            for (int i = 0; i < ZonaList.size(); i++) {
 
-            ListaZona.add(ZonaList.get(i).getNom_Zona());
-            IntAuxZona.add(ZonaList.get(i).getId());
+                ListaZona.add(ZonaList.get(i).getId() + "- " + ZonaList.get(i).getNom_Zona());
+
+            }
+
+            AdaperTipo = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaTipo);
+            AdaperZona = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaZona);
+
+        }else{
+            //Esto es editando una maquina el spinner
+            if(idTask != -1){
+                //Estos dos fors son para cuando edito me salga el que habia escojido primero(Tipo)
+                for(int i = 0; i < TipoList.size(); i ++){
+                    if(TipoList.get(i).getId() == CursorCojerMaquina.getInt(CursorCojerMaquina.getColumnIndex(Datasource.TIPO))){
+                        ListaTipoFinalEditar.add(String.valueOf(TipoList.get(i).getId() + "- " + TipoList.get(i).getNom_Tipo()));
+
+                    }else{
+                        ListaTipo.add(String.valueOf(TipoList.get(i).getId() + "- " + TipoList.get(i).getNom_Tipo()));
+
+                    }
+                }
+
+                for(int j = 0; j < ListaTipo.size(); j++){
+                    ListaTipoFinalEditar.add(ListaTipo.get(j));
+                }
+
+                //Estos dos fors son para cuando edito me salga el que habia escojido primero(Zona)
+                for(int x = 0; x < ZonaList.size(); x++){
+                    if(ZonaList.get(x).getId() == CursorCojerMaquina.getInt(CursorCojerMaquina.getColumnIndex(Datasource.ZONA))){
+                        ListaZonaFinalEditar.add(String.valueOf(ZonaList.get(x).getId() + "- " + ZonaList.get(x).getNom_Zona()));
+                    }else{
+                        ListaZona.add(String.valueOf(ZonaList.get(x).getId() + "- " + ZonaList.get(x).getNom_Zona()));
+                    }
+                }
+
+                for(int y = 0; y < ListaZona.size(); y++){
+                    ListaZonaFinalEditar.add(ListaZona.get(y));
+                }
+
+                AdaperTipo = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaTipoFinalEditar);
+                AdaperZona = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaZonaFinalEditar);
+            }
         }
 
 
 
-        AdaperTipo = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaTipo);
-        AdaperZona = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, ListaZona);
+
 
         STipo.setAdapter(AdaperTipo);
 
@@ -130,22 +176,23 @@ public class CrearEditarMaquina extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Optri = STipo.getSelectedItem().toString();
+                String Aux = "";
+                int contameesapelotudo = 0;
 
-                if(Optri!="")
-                {
-                    for(int j = 0; j < IntAuxTipo.size(); j++){
-                        if(Optri.equalsIgnoreCase(ListaTipo.get(j))){
-                            IdTipoFinal = IntAuxTipo.get(j);
+                    if (Optri != "") {
+                        while(Optri.charAt(contameesapelotudo) != '-'){
+                            Aux = Aux + "" + Optri.charAt(contameesapelotudo);
+                            contameesapelotudo++;
                         }
-                    }
-                    NotNulll=false;
-                }
-                else{
+                        IdTipoFinal = Integer.parseInt(Aux);
+                        NotNulll = false;
+                    } else {
 
-                    NotNulll=true;
-                }
+                        NotNulll = true;
+                    }
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -157,22 +204,24 @@ public class CrearEditarMaquina extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Zotri = SZona.getSelectedItem().toString();
+                String Aux2 = "";
+                int contameesapelotudo2 = 0;
 
-                if(Zotri!="")
-                {
-                    for(int j = 0; j < IntAuxZona.size(); j++){
-                        if(Zotri.equalsIgnoreCase(ListaZona.get(j))){
-                            IdZonaFinal = IntAuxZona.get(j);
+
+                    if (Zotri != "") {
+                        while(Zotri.charAt(contameesapelotudo2) != '-'){
+                            Aux2 = Aux2 + "" + Zotri.charAt(contameesapelotudo2);
+                            contameesapelotudo2++;
                         }
-                    }
-                    NotNullll=false;
-                }
-                else{
+                        IdZonaFinal = Integer.parseInt(Aux2);
+                        NotNullll = false;
+                    } else {
 
-                    NotNullll=true;
-                }
+                        NotNullll = true;
+                    }
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -186,8 +235,8 @@ public class CrearEditarMaquina extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_editar_maquina);
 
-            bd = new Datasource(CrearEditarMaquina.this);
-            idTask = this.getIntent().getExtras().getLong("id");
+        bd = new Datasource(CrearEditarMaquina.this);
+        idTask = this.getIntent().getExtras().getLong("id");
 
 
         EtNom_Maquina = findViewById(R.id.Edit_text_Nombre_Cliente);
@@ -353,33 +402,30 @@ public class CrearEditarMaquina extends AppCompatActivity {
         }
         String Data = EtData.getText().toString();
 
-            boolean CursorMirar2 = bd.Update(idTask,Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
-            if(CursorMirar2 == true){
-                Toast.makeText(CrearEditarMaquina.this, "No pots pots una maquina amb el mateix numero de serie.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-
-        if(NotNulll == true){
-            Toast.makeText(CrearEditarMaquina.this,"No has introduït un tipus de maqiuna",Toast.LENGTH_SHORT).show();
+        boolean CursorMirar2 = bd.Update(idTask, Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
+        if (CursorMirar2 == true) {
+            Toast.makeText(CrearEditarMaquina.this, "No pots pots una maquina amb el mateix numero de serie.", Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        if(NotNullll == true){
-            Toast.makeText(CrearEditarMaquina.this,"No has introduït una zona",Toast.LENGTH_SHORT).show();
+        if (NotNulll == true) {
+            Toast.makeText(CrearEditarMaquina.this, "No has introduït un tipus de maqiuna", Toast.LENGTH_SHORT).show();
             return;
-
         }
 
 
+        if (NotNullll == true) {
+            Toast.makeText(CrearEditarMaquina.this, "No has introduït una zona", Toast.LENGTH_SHORT).show();
+            return;
+
+        }
 
 
         if (idTask == -1) {
             idTask = bd.Crear(Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
-        }
-        else {
-            bd.Update(idTask,Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
+        } else {
+            bd.Update(idTask, Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
 
 
         }
@@ -393,7 +439,6 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
 
     }
-
 
 
 }

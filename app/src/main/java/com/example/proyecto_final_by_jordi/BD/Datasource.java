@@ -48,7 +48,7 @@ public class Datasource {
     }
 
     // DESTRUCTOR
-    protected void finalize () {
+    protected void finalize() {
         // Cerramos los databases
         dbW.close();
         dbR.close();
@@ -60,18 +60,17 @@ public class Datasource {
     }
 
 
-
     //\\//\\//\\//\\//\\//\\Maquina//\\//\\//\\//\\//\\//\\
     //Mostrar Maquina
     public Cursor Todo_Maquina() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, IDGENERAL);
     }
 
     //Creem Maquina
-    public long Crear(String Nom_Maquina, String Adreça_Maquina, int CPo, String Poblacion, String Telefono, String Gmail, String Numero_Serie, String Data, int Tipo, int Zona){
+    public long Crear(String Nom_Maquina, String Adreça_Maquina, int CPo, String Poblacion, String Telefono, String Gmail, String Numero_Serie, String Data, int Tipo, int Zona) {
         ContentValues values = new ContentValues();
         values.put(NOM, Nom_Maquina);
         values.put(ADREÇA, Adreça_Maquina);
@@ -90,8 +89,8 @@ public class Datasource {
     public Cursor EditarMaquinaId(long id) {
         // Retorna un cursor només amb el id indicat
         // Retornem les tasques que el camp DONE = 1
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
-                IDGENERAL+ "=?", new String[]{String.valueOf(id)},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
+                IDGENERAL + "=?", new String[]{String.valueOf(id)},
                 null, null, null);
 
     }
@@ -110,10 +109,10 @@ public class Datasource {
         values.put(DATA, Data);
         values.put(TIPO, Tipo);
         values.put(ZONA, Zona);
-        try{
-            dbW.update(TABLE_MAQUINES, values, IDGENERAL + "=?", new String[]{ String.valueOf(id) });
+        try {
+            dbW.update(TABLE_MAQUINES, values, IDGENERAL + "=?", new String[]{String.valueOf(id)});
 
-        }catch (SQLiteConstraintException e){
+        } catch (SQLiteConstraintException e) {
             Return = true;
         }
         return Return;
@@ -122,13 +121,13 @@ public class Datasource {
     //Eliminar Maquina
     public void Borrar(long id) {
         // Eliminem la task amb clau primària "id"
-        dbW.delete(TABLE_MAQUINES,IDGENERAL + " = ?", new String[] { String.valueOf(id) });
+        dbW.delete(TABLE_MAQUINES, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
 
     //Ordenar maquina por nombres.
     public Cursor OrdenarNombres() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, NOM);
     }
@@ -136,7 +135,7 @@ public class Datasource {
     //Ordenar maquina por nombres.
     public Cursor OrdenarMix() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, ZONA + "," + POBLACIO + "," + ADREÇA);
     }
@@ -144,7 +143,7 @@ public class Datasource {
     //Ordenar maquinas por Zona.
     public Cursor OrdenarZona() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, ZONA);
     }
@@ -152,7 +151,7 @@ public class Datasource {
     //Ordenar maquinas por Poblacion.
     public Cursor OrdenarPoblacion() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, POBLACIO);
     }
@@ -160,7 +159,7 @@ public class Datasource {
     //Ordenar maquina por Direccion(Adreça).
     public Cursor OrdenarAdreça() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, ADREÇA);
     }
@@ -168,7 +167,7 @@ public class Datasource {
     //Ordenar maquina por Data.
     public Cursor OrdenarData() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, DATA);
     }
@@ -205,23 +204,16 @@ public class Datasource {
      */
 
 
-
-
-
-
-
-
-
     //\\//\\//\\//\\//\\//\\Zona//\\//\\//\\//\\//\\//\\
     public Cursor Todo_Zona() {
         // Retorem totes les tasques
-        return dbR.query(TABLE_ZONA, new String[]{IDGENERAL,NOMZONA},
+        return dbR.query(TABLE_ZONA, new String[]{IDGENERAL, NOMZONA},
                 null, null,
                 null, null, IDGENERAL);
     }
 
     //Creem Zona
-    public long Crear_Zona(String Nom_Zona){
+    public long Crear_Zona(String Nom_Zona) {
         ContentValues values = new ContentValues();
         values.put(NOMZONA, Nom_Zona);
         return dbW.insert(TABLE_ZONA, null, values);
@@ -231,15 +223,15 @@ public class Datasource {
     public void Update_Zona(long id, String Nom_Zona) {
         ContentValues values = new ContentValues();
         values.put(NOMZONA, Nom_Zona);
-        dbW.update(TABLE_ZONA,values, IDGENERAL + " = ?", new String[] { String.valueOf(id) });
+        dbW.update(TABLE_ZONA, values, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
 
     //Este metodo sirve para editar la zona, para cojer el id y poder editar el que ha escojido.
     public Cursor EditarZonaId(long id) {
         // Retorna un cursor només amb el id indicat
         // Retornem les tasques que el camp DONE = 1
-        return dbR.query(TABLE_ZONA, new String[]{IDGENERAL,NOMZONA},
-                IDGENERAL+ "=?", new String[]{String.valueOf(id)},
+        return dbR.query(TABLE_ZONA, new String[]{IDGENERAL, NOMZONA},
+                IDGENERAL + "=?", new String[]{String.valueOf(id)},
                 null, null, null);
 
     }
@@ -247,21 +239,16 @@ public class Datasource {
     //Cursor para mirar si hay alguna zona assignada a una maquina.
     public Cursor PoderEliminarZona(long id) {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
-                ZONA+ "=?", new String[]{String.valueOf(id)}, null,
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
+                ZONA + "=?", new String[]{String.valueOf(id)}, null,
                 null, null, null);
     }
 
     //Borrar la zona que ha seleccionat el usuari.
     public void BorrarZona(long id) {
         // Eliminem la task amb clau primària "id"
-        dbW.delete(TABLE_ZONA,IDGENERAL + " = ?", new String[] { String.valueOf(id) });
+        dbW.delete(TABLE_ZONA, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
-
-
-
-
-
 
 
     //\\//\\//\\//\\//\\//\\Tipo//\\//\\//\\//\\//\\//\\
@@ -273,7 +260,7 @@ public class Datasource {
     }
 
     //Creem Tipo
-    public long Crear_Tipo(String Nom_Tipo, String Color_Tipo){
+    public long Crear_Tipo(String Nom_Tipo, String Color_Tipo) {
         ContentValues values = new ContentValues();
         values.put(NOMMAQUINA, Nom_Tipo);
         values.put(COLOR_TIPUS, Color_Tipo);
@@ -285,15 +272,15 @@ public class Datasource {
         ContentValues values = new ContentValues();
         values.put(NOMMAQUINA, Nom_Tipo);
         values.put(COLOR_TIPUS, Color_Tipo);
-        dbW.update(TABLE_TIPO_MAQUINAS,values, IDGENERAL + " = ?", new String[] { String.valueOf(id) });
+        dbW.update(TABLE_TIPO_MAQUINAS, values, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
 
     //Este metodo sirve para editar la zona, para cojer el id y poder editar el que ha escojido.
     public Cursor EditarTipoId(long id) {
         // Retorna un cursor només amb el id indicat
         // Retornem les tasques que el camp DONE = 1
-        return dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL,NOMMAQUINA, COLOR_TIPUS },
-                IDGENERAL+ "=?", new String[]{String.valueOf(id)},
+        return dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL, NOMMAQUINA, COLOR_TIPUS},
+                IDGENERAL + "=?", new String[]{String.valueOf(id)},
                 null, null, null);
 
     }
@@ -301,7 +288,7 @@ public class Datasource {
     //Cursor para mirar si hay algun tipo assignada a una maquina.
     public Cursor PoderEliminarTipo(long id) {
         // Retorem totes les tasques
-        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 TIPO + "=?", new String[]{String.valueOf(id)}, null,
                 null, null, null);
     }
@@ -309,7 +296,7 @@ public class Datasource {
     //Borrar el tipo que ha seleccionat el usuari.
     public void BorrarTipo(long id) {
         // Eliminem la task amb clau primària "id"
-        dbW.delete(TABLE_TIPO_MAQUINAS,IDGENERAL + " = ?", new String[] { String.valueOf(id) });
+        dbW.delete(TABLE_TIPO_MAQUINAS, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
 
 }

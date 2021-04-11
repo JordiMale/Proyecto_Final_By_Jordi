@@ -15,6 +15,8 @@ import com.example.proyecto_final_by_jordi.BD.Datasource;
 import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.ui.Zones.CrearZona;
 
+import java.util.zip.Inflater;
+
 public class CrearTipo extends AppCompatActivity {
 
     private Datasource bd;

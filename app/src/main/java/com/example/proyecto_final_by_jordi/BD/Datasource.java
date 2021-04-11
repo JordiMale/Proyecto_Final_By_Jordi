@@ -62,11 +62,25 @@ public class Datasource {
 
     //\\//\\//\\//\\//\\//\\Maquina//\\//\\//\\//\\//\\//\\
     //Mostrar Maquina
+
+    /*
     public Cursor Todo_Maquina() {
         // Retorem totes les tasques
+
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 null, null,
                 null, null, IDGENERAL);
+    }
+
+     */
+
+
+    public Cursor Todo_Maquina() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Nom_Client";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
     }
 
     //Creem Maquina
@@ -124,7 +138,7 @@ public class Datasource {
         dbW.delete(TABLE_MAQUINES, IDGENERAL + " = ?", new String[]{String.valueOf(id)});
     }
 
-    //Ordenar maquina por nombres.
+    /*
     public Cursor OrdenarNombres() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -132,7 +146,17 @@ public class Datasource {
                 null, null, NOM);
     }
 
+     */
     //Ordenar maquina por nombres.
+    public Cursor OrdenarNombres() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Nom_Client";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+    /*
     public Cursor OrdenarMix() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -140,7 +164,18 @@ public class Datasource {
                 null, null, ZONA + "," + POBLACIO + "," + ADREÇA);
     }
 
-    //Ordenar maquinas por Zona.
+     */
+
+    //Ordenar maquina por nombres.
+    public Cursor OrdenarMix() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona, Maqui.Poblacio, Maquin.Adreça" ;
+
+        return dbR.rawQuery(MY_QUERY, null);
+    }
+
+
+    /*
     public Cursor OrdenarZona() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -148,7 +183,18 @@ public class Datasource {
                 null, null, ZONA);
     }
 
-    //Ordenar maquinas por Poblacion.
+     */
+
+    //Ordenar maquinas por Zona.
+    public Cursor OrdenarZona() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+    /*
     public Cursor OrdenarPoblacion() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -156,7 +202,18 @@ public class Datasource {
                 null, null, POBLACIO);
     }
 
-    //Ordenar maquina por Direccion(Adreça).
+     */
+
+    //Ordenar maquinas por Poblacion.
+    public Cursor OrdenarPoblacion() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Poblacio";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+    /*
     public Cursor OrdenarAdreça() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -164,7 +221,19 @@ public class Datasource {
                 null, null, ADREÇA);
     }
 
-    //Ordenar maquina por Data.
+     */
+
+
+    //Ordenar maquina por Direccion(Adreça).
+    public Cursor OrdenarAdreça() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Adreça";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+    /*
     public Cursor OrdenarData() {
         // Retorem totes les tasques
         return dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
@@ -172,6 +241,19 @@ public class Datasource {
                 null, null, DATA);
     }
 
+     */
+
+    //Ordenar maquina por Data.
+    public Cursor OrdenarData() {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Data";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+
+    /*
     //Filtrar por numero de serie
     public Cursor FiltrarNumSerie(String nums) {
         final String Filtrar = "SELECT * FROM Maquines WHERE NumeSerie LIKE '%" + nums + "%'";
@@ -179,12 +261,27 @@ public class Datasource {
 
     }
 
+     */
+
+    public Cursor FiltrarNumSerie(String nums) {
+        final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id WHERE NumeSerie LIKE '%" + nums + "%'" + "  ORDER BY Maqui.Nom_Client";
+
+        return dbR.rawQuery(MY_QUERY, null);
+
+    }
+
+
+    /*
+
     //Mirar si ya hay algun numero de serie creado.
     public Cursor MirarNumSerie(String nums) {
         final String Filtrar = "SELECT * FROM Maquines WHERE NumeSerie LIKE '%" + nums + "%'";
         return dbR.rawQuery(Filtrar, null);
 
     }
+
+     */
 
     /*
     //Poder editar una maquina y que no se repita el numero de serie

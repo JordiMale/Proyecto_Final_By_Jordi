@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.proyecto_final_by_jordi.BD.Datasource;
+import com.example.proyecto_final_by_jordi.Filtro;
 import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.ui.Gestion.CrearEditarMaquina;
 import com.example.proyecto_final_by_jordi.ui.Gestion.GestionFragment;
@@ -64,13 +68,35 @@ public class ZonesFragment extends Fragment {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        switch (item.getItemId()) {
+            case R.id.CrearZona:
+                AddZones();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.mainnn, menu);
+
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_zones, container, false);
         bd = new Datasource(getContext());
 
+        setHasOptionsMenu(true);
+
+
+        /*
         btn_Ir_Crear_Zona = v.findViewById(R.id.btn_Zona);
 
         btn_Ir_Crear_Zona.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +106,8 @@ public class ZonesFragment extends Fragment {
             }
         });
 
+
+         */
         loadTasks(v);
         return v;
     }

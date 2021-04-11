@@ -35,6 +35,7 @@
         <activity android:name=".ui.Tipus_Maqiunes.CrearTipo" />
         <activity android:name=".ui.Zones.CrearZona" />
         <activity android:name=".ui.Gestion.CrearEditarMaquina" />
+
         <activity android:name=".PantallaCargaPrincipal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />

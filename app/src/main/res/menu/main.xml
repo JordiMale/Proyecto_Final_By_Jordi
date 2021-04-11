@@ -12,6 +12,13 @@
     </item>
 
     <item
+        android:id="@+id/CrearMaquina"
+        android:orderInCategory="100"
+        android:icon="@drawable/positive"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="Crear" />
+
+    <item
 
         android:id="@+id/Todo"
         android:orderInCategory="100"

@@ -75,8 +75,8 @@ public class GestionFragment extends Fragment {
             Datasource.GMAIL,
             Datasource.NUMEROSERIE,
             Datasource.DATA,
-            Datasource.TIPO,
-            Datasource.ZONA,};
+            Datasource.NOMMAQUINA,
+            Datasource.NOMZONA,};
 
     private static int[] to = new int[]{
             R.id.Maquina_Nom_Client,
@@ -144,10 +144,14 @@ public class GestionFragment extends Fragment {
                 FiltreAplicat = Filtro.MIX;
                 ActualizarProductesMaquina();
                 return true;
+            case R.id.CrearMaquina:
+                AddMaquina();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -211,11 +215,10 @@ public class GestionFragment extends Fragment {
                 }
             }
         }
-
-
-        btn_Ir_Crear_Maquina = v.findViewById(R.id.btn_Gestion);
-
         bd = new Datasource(getContext());
+
+        /*
+        btn_Ir_Crear_Maquina = v.findViewById(R.id.btn_Gestion);
 
         btn_Ir_Crear_Maquina.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,6 +227,8 @@ public class GestionFragment extends Fragment {
 
             }
         });
+
+         */
         loadTasks(v);
 
 
@@ -350,6 +355,7 @@ public class GestionFragment extends Fragment {
         Cursor Cursor_Maquina = bd.EditarMaquinaId(id);
 
         // Now create a simple cursor adapter and set it to display
+
         scTasks.changeCursor(Cursor_Maquina);
         scTasks.notifyDataSetChanged();
 
@@ -377,6 +383,7 @@ public class GestionFragment extends Fragment {
         Cursor Cursor_Maquina = bd.EditarMaquinaId(id);
 
         // Now create a simple cursor adapter and set it to display
+
         scTasks.changeCursor(Cursor_Maquina);
         scTasks.notifyDataSetChanged();
 

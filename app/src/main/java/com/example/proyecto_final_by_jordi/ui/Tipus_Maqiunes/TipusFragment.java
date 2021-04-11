@@ -8,6 +8,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,6 +26,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.proyecto_final_by_jordi.BD.Datasource;
+import com.example.proyecto_final_by_jordi.Filtro;
 import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.ui.Gestion.GestionFragment;
 import com.example.proyecto_final_by_jordi.ui.Zones.CrearZona;
@@ -65,6 +69,23 @@ public class TipusFragment extends Fragment {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.CrearTipo:
+                AddTipo();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.mainn, menu);
+    }
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -73,6 +94,9 @@ public class TipusFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_tipus, container, false);
         bd = new Datasource(getContext());
 
+        setHasOptionsMenu(true);
+
+        /*
         btn_Ir_Crear_Tipo = v.findViewById(R.id.btn_Tipo);
 
         btn_Ir_Crear_Tipo.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +105,8 @@ public class TipusFragment extends Fragment {
                 AddTipo();
             }
         });
+
+         */
         loadTasks(v);
         return v;
     }

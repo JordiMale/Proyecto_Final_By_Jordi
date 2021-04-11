@@ -12,21 +12,6 @@
         android:layout_height="match_parent"></ListView>
 
 
-    <Button
-        android:id="@+id/btn_Gestion"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:autoSizeTextType="uniform"
-        android:background="@drawable/btn_ripple"
-        android:fontFamily="@font/aclonica"
-        android:text="+"
-        android:textColor="#000000"
-        app:backgroundTint="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

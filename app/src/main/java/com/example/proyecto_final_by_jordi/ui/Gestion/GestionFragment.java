@@ -418,10 +418,10 @@ public class GestionFragment extends Fragment {
 
     }
 
-    public void IrGmaps(String  Nom) {
+    public void IrGmaps(String  Pob) {
 
         Bundle bundle = new Bundle();
-        bundle.putString("id", Nom);
+        bundle.putString("id", Pob);
 
         NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Gestion_Maquines_to_GoogleFragment, bundle);
 
@@ -473,7 +473,7 @@ public class GestionFragment extends Fragment {
                     // Carrego la linia del cursor de la posició.
                     Cursor linia = (Cursor) getItem(position);
 
-                    oTodoListIcon.IrGmaps(linia.getString(linia.getColumnIndexOrThrow(Datasource.NOMZONA)));
+                    oTodoListIcon.IrGmaps(linia.getString(linia.getColumnIndexOrThrow(Datasource.POBLACIO)));
                 }
             });
 

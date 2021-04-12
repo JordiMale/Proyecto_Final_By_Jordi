@@ -42,7 +42,6 @@ public class Datasource {
     public Datasource(Context ctx) {
         // En el constructor directament obro la comunicació amb la base de dades
         dbHelper = new Helper(ctx);
-
         // amés també construeixo dos databases un per llegir i l'altre per alterar
         open();
     }
@@ -74,7 +73,6 @@ public class Datasource {
 
      */
 
-
     public Cursor Todo_Maquina() {
         final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
                 "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Nom_Client";
@@ -100,17 +98,17 @@ public class Datasource {
     }
 
     //Mirar si hay algun numero de serie para poder crear.
-    public boolean PoderCrear(String Num_Serie){
+    public boolean PoderCrear(String Num_Serie) {
         boolean BooleanCrear;
-        Cursor MirarNum = dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+        Cursor MirarNum = dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL, NOM, ADREÇA, CP, POBLACIO, TELEFON, GMAIL, NUMEROSERIE, DATA, TIPO, ZONA},
                 NUMEROSERIE + "=?", new String[]{String.valueOf(Num_Serie)},
                 null, null, null);
-        if(!MirarNum.moveToFirst()){
+        if (!MirarNum.moveToFirst()) {
             BooleanCrear = true;
-        }else{
+        } else {
             BooleanCrear = false;
         }
-        return  BooleanCrear;
+        return BooleanCrear;
     }
 
     //Este metodo sirve tanto para editar la maquina como para hacer lo de llamar y enviar el correo.
@@ -183,7 +181,7 @@ public class Datasource {
     //Ordenar maquina por nombres.
     public Cursor OrdenarMix() {
         final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
-                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona, Maqui.Poblacio, Maquin.Adreça" ;
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona, Maqui.Poblacio, Maquin.Adreça";
 
         return dbR.rawQuery(MY_QUERY, null);
     }
@@ -331,17 +329,17 @@ public class Datasource {
     }
 
     //Mirar para poder crear una zona mirando que no se repita la zona
-    public boolean PoderCrearZona(String Nom_Zona){
+    public boolean PoderCrearZona(String Nom_Zona) {
         boolean BooleanCrearZona;
-        Cursor MirarZona = dbR.query(TABLE_ZONA, new String[]{IDGENERAL,NOMZONA},
+        Cursor MirarZona = dbR.query(TABLE_ZONA, new String[]{IDGENERAL, NOMZONA},
                 NOMZONA + "=?", new String[]{String.valueOf(Nom_Zona)},
                 null, null, null);
-        if(!MirarZona.moveToFirst()){
+        if (!MirarZona.moveToFirst()) {
             BooleanCrearZona = true;
-        }else{
+        } else {
             BooleanCrearZona = false;
         }
-        return  BooleanCrearZona;
+        return BooleanCrearZona;
     }
 
     //Aqui actualizamos los datos.
@@ -394,17 +392,17 @@ public class Datasource {
 
 
     //Mirar para poder crear un tipo mirando que no se repita el tipo
-    public boolean PoderCrearTipo(String Nom_Tipo){
+    public boolean PoderCrearTipo(String Nom_Tipo) {
         boolean BooleanCrearTipo;
-        Cursor MirarTipo = dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL,NOMMAQUINA},
+        Cursor MirarTipo = dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL, NOMMAQUINA},
                 NOMMAQUINA + "=?", new String[]{String.valueOf(Nom_Tipo)},
                 null, null, null);
-        if(!MirarTipo.moveToFirst()){
+        if (!MirarTipo.moveToFirst()) {
             BooleanCrearTipo = true;
-        }else{
+        } else {
             BooleanCrearTipo = false;
         }
-        return  BooleanCrearTipo;
+        return BooleanCrearTipo;
     }
 
     //Aqui actualizamos los datos.

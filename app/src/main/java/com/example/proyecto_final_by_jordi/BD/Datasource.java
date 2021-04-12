@@ -99,6 +99,7 @@ public class Datasource {
         return dbW.insert(TABLE_MAQUINES, null, values);
     }
 
+    //Mirar si hay algun numero de serie para poder crear.
     public boolean PoderCrear(String Num_Serie){
         boolean BooleanCrear;
         Cursor MirarNum = dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
@@ -329,6 +330,7 @@ public class Datasource {
         return dbW.insert(TABLE_ZONA, null, values);
     }
 
+    //Mirar para poder crear una zona mirando que no se repita la zona
     public boolean PoderCrearZona(String Nom_Zona){
         boolean BooleanCrearZona;
         Cursor MirarZona = dbR.query(TABLE_ZONA, new String[]{IDGENERAL,NOMZONA},
@@ -390,6 +392,8 @@ public class Datasource {
         return dbW.insert(TABLE_TIPO_MAQUINAS, null, values);
     }
 
+
+    //Mirar para poder crear un tipo mirando que no se repita el tipo
     public boolean PoderCrearTipo(String Nom_Tipo){
         boolean BooleanCrearTipo;
         Cursor MirarTipo = dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL,NOMMAQUINA},

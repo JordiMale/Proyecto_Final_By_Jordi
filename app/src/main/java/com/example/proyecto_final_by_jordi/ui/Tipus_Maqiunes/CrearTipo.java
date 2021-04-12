@@ -210,6 +210,7 @@ public class CrearTipo extends AppCompatActivity {
         }
 
  */
+
         String Nom_Tipo = EtNom_Tipo.getText().toString();
         if(Nom_Tipo.equals("")){
             Toast.makeText(CrearTipo.this,"No has introduït un nom",Toast.LENGTH_SHORT).show();

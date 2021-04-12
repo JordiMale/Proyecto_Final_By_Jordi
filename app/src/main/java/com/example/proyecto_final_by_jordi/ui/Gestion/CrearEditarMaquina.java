@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
@@ -29,6 +30,7 @@ import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.Tipo;
 import com.example.proyecto_final_by_jordi.Zona;
 import com.example.proyecto_final_by_jordi.ui.Tipus_Maqiunes.CrearTipo;
+import com.example.proyecto_final_by_jordi.ui.Zones.CrearZona;
 
 import org.w3c.dom.Text;
 
@@ -274,6 +276,13 @@ public class CrearEditarMaquina extends AppCompatActivity {
             }
         });
 
+        IrZona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CrearZona();
+            }
+        });
+
 
 
         BtnData.setOnClickListener(new View.OnClickListener() {
@@ -335,79 +344,70 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         LayoutInflater layout = this.getLayoutInflater();
 
-        View vista = layout.inflate(R.layout.activity_crear_tipo, null);
-        setContentView(vista);
+        View vista = layout.inflate(R.layout.activity_crear_tipo_alert, null);
 
 
+
+       // AlertDialog dialog = builder.create();
+
+
+        //Button BtnCancelar_Tipo = findViewById(R.id.btn_Cancelar_Tipo);
+        //Button BtnAcceptar_Tipo = findViewById(R.id.btn_Acceptar_Tipo);
+
+        //builder.setPositiveButton()
+        builder.setView(vista).setPositiveButton("Si", new DialogInterface.OnClickListener()  {
+            public void onClick(DialogInterface dialog, int id) {
+                acceptrcambiosTipo(vista);
+
+
+            }
+        });
+
+        builder.setView(vista).setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
-
-
-
-
-        Button BtnCancelar_Tipo = findViewById(R.id.btn_Cancelar_Tipo);
-        Button BtnAcceptar_Tipo = findViewById(R.id.btn_Acceptar_Tipo);
-
-        BtnAcceptar_Tipo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                acceptrcambiosTipo();
-                return;
-
-            }
-        });
-
-        BtnCancelar_Tipo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                return;
-
-            }
-        });
-
         dialog.show();
+
+
 
     }
 
+    private void acceptrcambiosTipo(View v) {
 
-    private void acceptrcambiosTipo() {
+            EditText EtNom_Tipo_Alert = v.findViewById(R.id.Edt_Nom_Tipo_Alert);
 
-            EditText EtNom_Tipo = findViewById(R.id.Edt_Nom_Tipo);
+            RadioButton RadioRojo_Alert = (RadioButton)v.findViewById(R.id.RadioRojo_Alert);
+            RadioButton RadioAzul_Alert = (RadioButton)v.findViewById(R.id.RadioAzul_Alert);
+            RadioButton RadioAmarillo_Alert = (RadioButton)v.findViewById(R.id.RadioAmarillo_Alert);
+            RadioButton RadioNaranja_Alert = (RadioButton)v.findViewById(R.id.RadioNaranja_Alert);
+            RadioButton RadioRosa_Alert = (RadioButton)v.findViewById(R.id.RadioRosa_Alert);
+            RadioButton RadioLila_Alert = (RadioButton)v.findViewById(R.id.RadioLila_Alert);
+            RadioButton RadioVerde_Alert = (RadioButton)v.findViewById(R.id.RadioVerde_Alert);
+            RadioButton RadioTurquesa_Alert = (RadioButton)v.findViewById(R.id.RadioTurquesa_Alert);
 
-            RadioButton RadioRojo = (RadioButton)findViewById(R.id.RadioRojo);
-            RadioButton RadioAzul = (RadioButton)findViewById(R.id.RadioAzul);
-            RadioButton RadioAmarillo = (RadioButton)findViewById(R.id.RadioAmarillo);
-            RadioButton RadioNaranja = (RadioButton)findViewById(R.id.RadioNaranja);
-            RadioButton RadioRosa = (RadioButton)findViewById(R.id.RadioRosa);
-            RadioButton RadioLila = (RadioButton)findViewById(R.id.RadioLila);
-            RadioButton RadioVerde = (RadioButton)findViewById(R.id.RadioVerde);
-            RadioButton RadioTurquesa = (RadioButton)findViewById(R.id.RadioTurquesa);
-
-            String GuardarRadio = "";
-            if (RadioRojo.isChecked()){
-                GuardarRadio = "Rojo";
+            String GuardarRadio_Alert = "";
+            if (RadioRojo_Alert.isChecked()){
+                GuardarRadio_Alert = "Rojo";
             }else{
-                if(RadioAzul.isChecked()){
-                    GuardarRadio = "Azul";
+                if(RadioAzul_Alert.isChecked()){
+                    GuardarRadio_Alert = "Azul";
                 }else{
-                    if(RadioAmarillo.isChecked()){
-                        GuardarRadio = "Amarillo";
+                    if(RadioAmarillo_Alert.isChecked()){
+                        GuardarRadio_Alert = "Amarillo";
                     }else{
-                        if(RadioNaranja.isChecked()){
-                            GuardarRadio = "Naranja";
+                        if(RadioNaranja_Alert.isChecked()){
+                            GuardarRadio_Alert = "Naranja";
                         }else{
-                            if(RadioRosa.isChecked()){
-                                GuardarRadio = "Rosa";
+                            if(RadioRosa_Alert.isChecked()){
+                                GuardarRadio_Alert = "Rosa";
                             }else{
-                                if(RadioLila.isChecked()){
-                                    GuardarRadio = "Lila";
+                                if(RadioLila_Alert.isChecked()){
+                                    GuardarRadio_Alert = "Lila";
                                 }else{
-                                    if(RadioVerde.isChecked()){
-                                        GuardarRadio = "Verde";
+                                    if(RadioVerde_Alert.isChecked()){
+                                        GuardarRadio_Alert = "Verde";
                                     }else{
-                                        if(RadioTurquesa.isChecked()){
-                                            GuardarRadio = "Turquesa";
+                                        if(RadioTurquesa_Alert.isChecked()){
+                                            GuardarRadio_Alert = "Turquesa";
                                         }
                                     }
                                 }
@@ -418,22 +418,64 @@ public class CrearEditarMaquina extends AppCompatActivity {
             }
 
 
-            String Nom_Tipo = EtNom_Tipo.getText().toString();
-            if(Nom_Tipo.equals("")){
+            String Nom_Tipo_Alert = EtNom_Tipo_Alert.getText().toString();
+            if(Nom_Tipo_Alert.equals("")){
                 Toast.makeText(this,"No has introduït un nom",Toast.LENGTH_SHORT).show();
                 return;
             }
 
 
-            bd.Crear_Tipo(Nom_Tipo,GuardarRadio);
-
-
-
-
+            bd.Crear_Tipo(Nom_Tipo_Alert,GuardarRadio_Alert);
 
         }
 
 
+    //Para crear zonas dentro de maquinas
+    private void CrearZona() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(CrearEditarMaquina.this);
+
+        LayoutInflater layout = this.getLayoutInflater();
+
+        View vista = layout.inflate(R.layout.activity_crear_zona_alert, null);
+
+
+
+        // AlertDialog dialog = builder.create();
+
+
+        //Button BtnCancelar_Tipo = findViewById(R.id.btn_Cancelar_Tipo);
+        //Button BtnAcceptar_Tipo = findViewById(R.id.btn_Acceptar_Tipo);
+
+        //builder.setPositiveButton()
+        builder.setView(vista).setPositiveButton("Si", new DialogInterface.OnClickListener()  {
+            public void onClick(DialogInterface dialog, int id) {
+                acceptrcambiosZona(vista);
+
+
+            }
+        });
+
+        builder.setView(vista).setNegativeButton("No", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    private void acceptrcambiosZona(View v) {
+
+        EditText EtNom_Zona_Alert;
+        EtNom_Zona_Alert = v.findViewById(R.id.Edt_Nom_Zona_Alert);
+
+        String Nom_Zona_Alert = EtNom_Zona_Alert.getText().toString();
+        if(Nom_Zona_Alert.equals("")){
+            Toast.makeText(this,"No has introduït un nom",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        bd.Crear_Zona(Nom_Zona_Alert);
+
+    }
 
 
     //Para la maquina
@@ -529,7 +571,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         boolean CursorMirar2 = bd.Update(idTask, Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
         if (CursorMirar2 == true) {
-            Toast.makeText(CrearEditarMaquina.this, "No pots pots una maquina amb el mateix numero de serie.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CrearEditarMaquina.this, "No pots posar una maquina amb el mateix numero de serie.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -546,13 +588,17 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         }
 
+        boolean Cursor = bd.PoderCrear(Numero_Serie);
 
         if (idTask == -1) {
-            idTask = bd.Crear(Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
+            if(Cursor != true ){
+                Toast.makeText(CrearEditarMaquina.this, "No pots crear una maquina amb el mateix numero de serie", Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                idTask = bd.Crear(Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
+            }
         } else {
             bd.Update(idTask, Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);
-
-
         }
 
         //bd.Crear(Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, Tipo, Zona);

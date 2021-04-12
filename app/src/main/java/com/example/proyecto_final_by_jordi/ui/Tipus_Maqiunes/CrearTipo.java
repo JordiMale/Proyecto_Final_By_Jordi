@@ -210,23 +210,24 @@ public class CrearTipo extends AppCompatActivity {
         }
 
  */
-
-
-
         String Nom_Tipo = EtNom_Tipo.getText().toString();
         if(Nom_Tipo.equals("")){
             Toast.makeText(CrearTipo.this,"No has introduït un nom",Toast.LENGTH_SHORT).show();
             return;
         }
 
+        boolean Cursor = bd.PoderCrearTipo(Nom_Tipo);
         if (idTask == -1) {
-            idTask = bd.Crear_Tipo(Nom_Tipo,GuardarRadio);
+            if(Cursor != true){
+                Toast.makeText(CrearTipo.this,"No pots crear un tipus que ja existeix.",Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                idTask = bd.Crear_Tipo(Nom_Tipo,GuardarRadio);
+            }
         }
         else {
             bd.Update_Tipo(idTask,Nom_Tipo,GuardarRadio);
-
         }
-
 
         Intent intent = new Intent();
         intent.putExtra("id", idTask);

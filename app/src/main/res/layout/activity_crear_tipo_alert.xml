@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/Titulo_Añadir_Tipo"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:text="Añadir Tipo Maquina"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+
+        <EditText
+            android:id="@+id/Edt_Nom_Tipo_Alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Tipo"
+            android:inputType="textPersonName" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Colores Disponibles" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="7dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/RadioRojo_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#F9433B"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Rojo" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioAzul_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#00B4FF"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Azul" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioAmarillo_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#F0FB35"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Amarillo" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioNaranja_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#FF9F4F"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Naranja" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioRosa_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#FB3DE9"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Rosa" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioLila_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#C74CFF"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Lila" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+                <RadioButton
+                    android:id="@+id/RadioVerde_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#70FF4C"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Verde" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp" />
+
+                <RadioButton
+                    android:id="@+id/RadioTurquesa_Alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="#4CFFDA"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Turquesa" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

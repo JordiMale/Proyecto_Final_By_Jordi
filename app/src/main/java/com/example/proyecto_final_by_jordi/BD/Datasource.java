@@ -99,6 +99,19 @@ public class Datasource {
         return dbW.insert(TABLE_MAQUINES, null, values);
     }
 
+    public boolean PoderCrear(String Num_Serie){
+        boolean BooleanCrear;
+        Cursor MirarNum = dbR.query(TABLE_MAQUINES, new String[]{IDGENERAL,NOM,ADREÇA,CP,POBLACIO,TELEFON,GMAIL,NUMEROSERIE,DATA,TIPO,ZONA},
+                NUMEROSERIE + "=?", new String[]{String.valueOf(Num_Serie)},
+                null, null, null);
+        if(!MirarNum.moveToFirst()){
+            BooleanCrear = true;
+        }else{
+            BooleanCrear = false;
+        }
+        return  BooleanCrear;
+    }
+
     //Este metodo sirve tanto para editar la maquina como para hacer lo de llamar y enviar el correo.
     public Cursor EditarMaquinaId(long id) {
         // Retorna un cursor només amb el id indicat
@@ -316,6 +329,19 @@ public class Datasource {
         return dbW.insert(TABLE_ZONA, null, values);
     }
 
+    public boolean PoderCrearZona(String Nom_Zona){
+        boolean BooleanCrearZona;
+        Cursor MirarZona = dbR.query(TABLE_ZONA, new String[]{IDGENERAL,NOMZONA},
+                NOMZONA + "=?", new String[]{String.valueOf(Nom_Zona)},
+                null, null, null);
+        if(!MirarZona.moveToFirst()){
+            BooleanCrearZona = true;
+        }else{
+            BooleanCrearZona = false;
+        }
+        return  BooleanCrearZona;
+    }
+
     //Aqui actualizamos los datos.
     public void Update_Zona(long id, String Nom_Zona) {
         ContentValues values = new ContentValues();
@@ -362,6 +388,19 @@ public class Datasource {
         values.put(NOMMAQUINA, Nom_Tipo);
         values.put(COLOR_TIPUS, Color_Tipo);
         return dbW.insert(TABLE_TIPO_MAQUINAS, null, values);
+    }
+
+    public boolean PoderCrearTipo(String Nom_Tipo){
+        boolean BooleanCrearTipo;
+        Cursor MirarTipo = dbR.query(TABLE_TIPO_MAQUINAS, new String[]{IDGENERAL,NOMMAQUINA},
+                NOMMAQUINA + "=?", new String[]{String.valueOf(Nom_Tipo)},
+                null, null, null);
+        if(!MirarTipo.moveToFirst()){
+            BooleanCrearTipo = true;
+        }else{
+            BooleanCrearTipo = false;
+        }
+        return  BooleanCrearTipo;
     }
 
     //Aqui actualizamos los datos.

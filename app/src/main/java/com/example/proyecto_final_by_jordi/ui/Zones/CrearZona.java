@@ -94,8 +94,23 @@ public class CrearZona extends AppCompatActivity {
             return;
         }
 
+        /*
+        boolean CursorMirarZona = bd.Update_Zona(idTask, Nom_Zona);
+        if(CursorMirarZona == true){
+            Toast.makeText(this, "Ja hi ha una zona amb el mateix nom!!!.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+         */
+
+        boolean Cursor = bd.PoderCrearZona(Nom_Zona);
         if (idTask == -1) {
-            idTask = bd.Crear_Zona(Nom_Zona);
+            if(Cursor != true){
+                Toast.makeText(this, "No pots crear una zonaque ja existeix.", Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                idTask = bd.Crear_Zona(Nom_Zona);
+            }
         }
         else {
             bd.Update_Zona(idTask,Nom_Zona);

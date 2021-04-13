@@ -181,7 +181,7 @@ public class Datasource {
     //Ordenar maquina por nombres.
     public Cursor OrdenarMix() {
         final String MY_QUERY = "SELECT Maqui._id,Nom_Client,Adreça,CP,Poblacio,Telefon,Gmail,NumeSerie,Data,TiM.NomMaquina,ZoM.NomZona " +
-                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona, Maqui.Poblacio, Maquin.Adreça";
+                "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY ZoM.NomZona, Maqui.Poblacio, Maqui.Adreça";
 
         return dbR.rawQuery(MY_QUERY, null);
     }
@@ -318,7 +318,7 @@ public class Datasource {
         // Retorem totes les tasques
         return dbR.query(TABLE_ZONA, new String[]{IDGENERAL, NOMZONA},
                 null, null,
-                null, null, IDGENERAL);
+                null, null, NOMZONA);
     }
 
     //Creem Zona

@@ -356,8 +356,7 @@ public class GestionFragment extends Fragment {
 
         // Now create a simple cursor adapter and set it to display
 
-        scTasks.changeCursor(Cursor_Maquina);
-        scTasks.notifyDataSetChanged();
+       Cursor_Maquina.moveToFirst();
 
         String Numero = Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.TELEFON));
 
@@ -384,8 +383,7 @@ public class GestionFragment extends Fragment {
 
         // Now create a simple cursor adapter and set it to display
 
-        scTasks.changeCursor(Cursor_Maquina);
-        scTasks.notifyDataSetChanged();
+        Cursor_Maquina.moveToFirst();
 
         String Gmail = Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.GMAIL));
         String Text = "Propera revisió maquina nº ";

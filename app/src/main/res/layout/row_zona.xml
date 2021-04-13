@@ -1,12 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentRight="false"
     android:layout_marginTop="5dp"
-    >
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/Gmaps_Zona_Maquina"
@@ -32,9 +31,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
                 android:autoSizeTextType="uniform"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/aclonica" />
 
-                />
         </LinearLayout>
 
 
@@ -47,7 +45,6 @@
         android:layout_weight="1"
 
         app:srcCompat="@drawable/dustbin" />
-
 
 
 </LinearLayout>

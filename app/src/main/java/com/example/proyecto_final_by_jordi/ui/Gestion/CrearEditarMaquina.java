@@ -273,6 +273,8 @@ public class CrearEditarMaquina extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CrearTipo();
+                MostrarSpinner();
+
             }
         });
 
@@ -280,6 +282,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CrearZona();
+
             }
         });
 
@@ -358,7 +361,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
         builder.setView(vista).setPositiveButton("Si", new DialogInterface.OnClickListener()  {
             public void onClick(DialogInterface dialog, int id) {
                 acceptrcambiosTipo(vista);
-
+                MostrarSpinner();
 
             }
         });
@@ -366,6 +369,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
         builder.setView(vista).setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
+        MostrarSpinner();
 
 
 
@@ -451,6 +455,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
         builder.setView(vista).setPositiveButton("Si", new DialogInterface.OnClickListener()  {
             public void onClick(DialogInterface dialog, int id) {
                 acceptrcambiosZona(vista);
+                MostrarSpinner();
 
 
             }
@@ -459,6 +464,8 @@ public class CrearEditarMaquina extends AppCompatActivity {
         builder.setView(vista).setNegativeButton("No", null);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+        MostrarSpinner();
 
     }
 

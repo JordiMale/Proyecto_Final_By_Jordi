@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-public class GoogleFragment extends Fragment{
+public class GoogleFragment extends Fragment {
 
     String Poblacion = "";
 
@@ -33,21 +33,20 @@ public class GoogleFragment extends Fragment{
         public void onMapReady(GoogleMap googleMap) {
 
             Geocoder Geoco = new Geocoder(getContext());
-            List<Address>Dire = null;
-            int  Resultado = 1;
-            if(Poblacion == null){
+            List<Address> Dire = null;
+            int Resultado = 1;
+            if (Poblacion == null) {
                 Poblacion = "Toledo";
             }
-                try {
-                    Dire = Geoco.getFromLocationName(Poblacion, Resultado);
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
+            try {
+                Dire = Geoco.getFromLocationName(Poblacion, Resultado);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
-            googleMap.addMarker(new MarkerOptions().position(Posicion).title("Marker in " + Poblacion));
+            googleMap.addMarker(new MarkerOptions().position(Posicion).title("Poblaicón: " + Poblacion));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
-
         }
     };
 
@@ -65,9 +64,9 @@ public class GoogleFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments() != null){
+        if (getArguments() != null) {
             Poblacion = getArguments().getString("id");
-        }else{
+        } else {
             Poblacion = "Toledo";
         }
 
@@ -77,8 +76,6 @@ public class GoogleFragment extends Fragment{
             mapFragment.getMapAsync(callback);
         }
     }
-
-
 
 
 }

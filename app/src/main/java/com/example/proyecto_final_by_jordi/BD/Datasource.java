@@ -121,6 +121,14 @@ public class Datasource {
 
     }
 
+    //Sirve para el mapa.
+    public Cursor GoogleMapsmaquina(long id){
+        final String MY_QUERY = "SELECT Poblacion,NumSerie,TiM.NomMaquina,TiM.Color FROM Maquines AS Maqui  INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id INNER JOIN ZonesM AS ZoM ON Maqui.Zona = ZoM._id WHERE Maqui.Zona = " + id;
+                return dbR.rawQuery(MY_QUERY,null);
+    }
+
+
+
     //Aqui actualizamos los datos.
     public boolean Update(long id, String Nom_Maquina, String Adreça_Maquina, int CPo, String Poblacion, String Telefono, String Gmail, String Numero_Serie, String Data, int Tipo, int Zona) {
         ContentValues values = new ContentValues();

@@ -96,28 +96,28 @@ public class CrearTipo extends AppCompatActivity {
 
         String GuardarRadio = "";
         if (RadioRojo.isChecked()){
-            GuardarRadio = "Rojo";
+            GuardarRadio = "#F9433B";
         }else{
             if(RadioAzul.isChecked()){
-                GuardarRadio = "Azul";
+                GuardarRadio = "#00B4FF";
             }else{
                 if(RadioAmarillo.isChecked()){
-                    GuardarRadio = "Amarillo";
+                    GuardarRadio = "#F0FB35";
                 }else{
                     if(RadioNaranja.isChecked()){
-                        GuardarRadio = "Naranja";
+                        GuardarRadio = "#FF9F4F";
                     }else{
                         if(RadioRosa.isChecked()){
-                            GuardarRadio = "Rosa";
+                            GuardarRadio = "#FB3DE9";
                         }else{
                             if(RadioLila.isChecked()){
-                                GuardarRadio = "Lila";
+                                GuardarRadio = "#C74CFF";
                             }else{
                                 if(RadioVerde.isChecked()){
-                                    GuardarRadio = "Verde";
+                                    GuardarRadio = "#70FF4C";
                                 }else{
                                     if(RadioTurquesa.isChecked()){
-                                        GuardarRadio = "Turquesa";
+                                        GuardarRadio = "#4CFFDA";
                                     }
                                 }
                             }

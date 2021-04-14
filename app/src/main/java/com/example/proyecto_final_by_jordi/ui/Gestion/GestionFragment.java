@@ -50,6 +50,7 @@ import java.util.Date;
 import java.util.zip.Inflater;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MIDI_SERVICE;
 
 public class GestionFragment extends Fragment {
 
@@ -416,10 +417,14 @@ public class GestionFragment extends Fragment {
 
     }
 
-    public void IrGmaps(String  Pob) {
-
+    public void IrGmaps(String  Pob ,String Tipo, String NumSerie, String Colorr) {
+        String[] Array = new String[4];
+        Array[0] = Pob;
+        Array[1] = Tipo;
+        Array[2] = NumSerie;
+        Array[3] = Colorr;
         Bundle bundle = new Bundle();
-        bundle.putString("id", Pob);
+        bundle.putStringArray("id", Array);
 
         NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Gestion_Maquines_to_GoogleFragment, bundle);
 
@@ -467,11 +472,42 @@ public class GestionFragment extends Fragment {
             btnGmaps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int IdGeneral;
+                    String NumSerie = "";
+                    String Poblacion = "";
+                    String NombreTipo = "";
+                    String ColorTipo = "";
+                    int IdTipoFoireng;
 
                     // Carrego la linia del cursor de la posició.
                     Cursor linia = (Cursor) getItem(position);
 
-                    oTodoListIcon.IrGmaps(linia.getString(linia.getColumnIndexOrThrow(Datasource.POBLACIO)));
+                    IdGeneral = linia.getInt(linia.getColumnIndexOrThrow(Datasource.IDGENERAL));
+
+                    Cursor MirarMaquina = bd.EditarMaquinaId(IdGeneral);
+                    MirarMaquina.moveToFirst();
+
+                    NumSerie = MirarMaquina.getString(MirarMaquina.getColumnIndexOrThrow(Datasource.NUMEROSERIE));
+                    Poblacion = MirarMaquina.getString(MirarMaquina.getColumnIndexOrThrow(Datasource.POBLACIO));
+
+                    IdTipoFoireng = MirarMaquina.getInt(MirarMaquina.getColumnIndexOrThrow(Datasource.TIPO));
+
+                    Cursor MirarTipo = bd.EditarTipoId(IdTipoFoireng);
+                    MirarTipo.moveToFirst();
+
+                    NombreTipo = MirarTipo.getString(MirarTipo.getColumnIndexOrThrow(Datasource.NOMMAQUINA));
+                    ColorTipo = MirarTipo.getString(MirarTipo.getColumnIndexOrThrow(Datasource.COLOR_TIPUS));
+
+                    oTodoListIcon.IrGmaps(Poblacion,NombreTipo,NumSerie,ColorTipo);
+
+
+
+
+
+
+
+
+
                 }
             });
 

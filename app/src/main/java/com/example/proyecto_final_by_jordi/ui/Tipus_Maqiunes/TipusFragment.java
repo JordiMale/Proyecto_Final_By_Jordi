@@ -233,28 +233,28 @@ public class TipusFragment extends Fragment {
 
             String done = linia.getString(linia.getColumnIndexOrThrow(Datasource.COLOR_TIPUS));
 
-            if(done.equalsIgnoreCase("Rojo")) {
+            if(done.equalsIgnoreCase(ROJO)) {
                 view.setBackgroundColor(Color.parseColor(ROJO));
             }
-            if(done.equalsIgnoreCase("Azul")) {
+            if(done.equalsIgnoreCase(AZUL)) {
                 view.setBackgroundColor(Color.parseColor(AZUL));
             }
-            if(done.equalsIgnoreCase("Amarillo")) {
+            if(done.equalsIgnoreCase(AMARILLO)) {
                 view.setBackgroundColor(Color.parseColor(AMARILLO));
             }
-            if(done.equalsIgnoreCase("Naranja")) {
+            if(done.equalsIgnoreCase(NARANJA)) {
                 view.setBackgroundColor(Color.parseColor(NARANJA));
             }
-            if(done.equalsIgnoreCase("Rosa")) {
+            if(done.equalsIgnoreCase(ROSA)) {
                 view.setBackgroundColor(Color.parseColor(ROSA));
             }
-            if(done.equalsIgnoreCase("Lila")) {
+            if(done.equalsIgnoreCase(LILA)) {
                 view.setBackgroundColor(Color.parseColor(LILA));
             }
-            if(done.equalsIgnoreCase("Verde")) {
+            if(done.equalsIgnoreCase(VERDE)) {
                 view.setBackgroundColor(Color.parseColor(VERDE));
             }
-            if(done.equalsIgnoreCase("Turquesa")) {
+            if(done.equalsIgnoreCase(TURQUESA)) {
                 view.setBackgroundColor(Color.parseColor(TURQUESA));
             }
 /*

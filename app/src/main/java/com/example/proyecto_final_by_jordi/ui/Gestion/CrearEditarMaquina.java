@@ -574,6 +574,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
             Toast.makeText(CrearEditarMaquina.this, "No has introduït un numero de serie", Toast.LENGTH_SHORT).show();
             return;
         }
+
         String Data = EtData.getText().toString();
 
         boolean CursorMirar2 = bd.Update(idTask, Nom_Maquina, Adreça_Maquina, CPINT, Poblacion, Telefono, Gmail, Numero_Serie, Data, IdTipoFinal, IdZonaFinal);

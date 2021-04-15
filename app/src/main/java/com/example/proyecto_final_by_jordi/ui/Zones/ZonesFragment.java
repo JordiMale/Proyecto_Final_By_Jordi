@@ -203,9 +203,13 @@ public class ZonesFragment extends Fragment {
 
     }
 
-    private void GmapsZona(int id){
+    private void GmapsZona(long id){
 
-        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Zones_to_GoogleFragment);
+        String  IDZonas = String.valueOf((int) id);
+        Bundle bundle = new Bundle();
+        bundle.putString("idZ", IDZonas);
+
+        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.action_navigation_Zones_to_GoogleFragment, bundle);
     }
 
 

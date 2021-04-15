@@ -78,7 +78,6 @@ public class Datasource {
                 "FROM Maquines AS Maqui INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id ORDER BY Maqui.Nom_Client";
 
         return dbR.rawQuery(MY_QUERY, null);
-
     }
 
     //Creem Maquina

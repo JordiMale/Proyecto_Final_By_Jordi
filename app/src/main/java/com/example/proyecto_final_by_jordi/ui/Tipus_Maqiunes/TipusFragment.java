@@ -84,7 +84,7 @@ public class TipusFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.mainn, menu);
+                inflater.inflate(R.menu.mainn, menu);
     }
 
 

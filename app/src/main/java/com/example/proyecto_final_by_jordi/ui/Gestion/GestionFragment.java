@@ -357,7 +357,7 @@ public class GestionFragment extends Fragment {
 
         // Now create a simple cursor adapter and set it to display
 
-       Cursor_Maquina.moveToFirst();
+        Cursor_Maquina.moveToFirst();
 
         String Numero = Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.TELEFON));
 
@@ -417,7 +417,7 @@ public class GestionFragment extends Fragment {
 
     }
 
-    public void IrGmaps(String  Pob ,String Tipo, String NumSerie, String Colorr) {
+    public void IrGmaps(String Pob, String Tipo, String NumSerie, String Colorr) {
         String[] Array = new String[4];
         Array[0] = Pob;
         Array[1] = Tipo;
@@ -498,14 +498,7 @@ public class GestionFragment extends Fragment {
                     NombreTipo = MirarTipo.getString(MirarTipo.getColumnIndexOrThrow(Datasource.NOMMAQUINA));
                     ColorTipo = MirarTipo.getString(MirarTipo.getColumnIndexOrThrow(Datasource.COLOR_TIPUS));
 
-                    oTodoListIcon.IrGmaps(Poblacion,NombreTipo,NumSerie,ColorTipo);
-
-
-
-
-
-
-
+                    oTodoListIcon.IrGmaps(Poblacion, NombreTipo, NumSerie, ColorTipo);
 
 
                 }

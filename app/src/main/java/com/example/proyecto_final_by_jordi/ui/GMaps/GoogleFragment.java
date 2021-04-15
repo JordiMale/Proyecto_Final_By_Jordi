@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.graphics.Color;
 
 import com.example.proyecto_final_by_jordi.BD.Datasource;
+import com.example.proyecto_final_by_jordi.GetSetGoogleMaps;
 import com.example.proyecto_final_by_jordi.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GoogleFragment extends Fragment {
@@ -41,7 +43,8 @@ public class GoogleFragment extends Fragment {
 
     List<Address> Dire = null;
     int Resultado = 1;
-
+    String DeZona = "";
+    ArrayList<GetSetGoogleMaps> Marca = new ArrayList<GetSetGoogleMaps>();
 
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -51,7 +54,7 @@ public class GoogleFragment extends Fragment {
             Geocoder Geoco = new Geocoder(getContext());
             //Cursor Cursor_Mirar_Maquina = bd.GoogleMapsmaquina(Poblacion);
 
-            if(ArrayPoblacion != null){
+            if (ArrayPoblacion != null) {
                 Poblacion = ArrayPoblacion[0];
                 Tipo = ArrayPoblacion[1];
                 NumSerie = ArrayPoblacion[2];
@@ -67,6 +70,42 @@ public class GoogleFragment extends Fragment {
                 LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
                 googleMap.addMarker(new MarkerOptions().position(Posicion).icon(getMarkerIcon(Colorr)).title("Tipo maquina: " + Tipo + ", Numero de serie: " + NumSerie));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+            } else {
+                if (DeZona != null) {
+                    Cursor GoogleZona = bd.GoogleMapsmaquina(Integer.parseInt(DeZona));
+                    GetSetGoogleMaps Marcas;
+
+                    while (GoogleZona.moveToNext()) {
+
+                        Poblacion = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.POBLACIO));
+                        NumSerie = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.NUMEROSERIE));
+                        Tipo = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.NOMMAQUINA));
+                        Colorr = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.COLOR_TIPUS));
+
+                        Marcas = new GetSetGoogleMaps(Poblacion, NumSerie, Tipo, Colorr);
+
+                        Marca.add(Marcas);
+
+
+                        for(int i = 0; i < Marca.size(); i++){
+
+                            try {
+                                Dire = Geoco.getFromLocationName(Marca.get(i).getPoblacio(), Resultado);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
+                            googleMap.addMarker(new MarkerOptions().position(Posicion).icon(getMarkerIcon(Marca.get(i).getColor())).title("Tipo maquina: " + Marca.get(i).getNom_Tipo() + ", Numero de serie: " + Marca.get(i).getNum_Serie()));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+                        }
+
+
+
+
+                    }
+
+                }
             }
 
 
@@ -108,11 +147,15 @@ public class GoogleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         if (getArguments() != null) {
             ArrayPoblacion = getArguments().getStringArray("id");
-        } else {
-            Poblacion = "Toledo";
+            DeZona = getArguments().getString("idZ");
         }
+
+
+        Poblacion = "Toledo";
+
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -120,8 +163,6 @@ public class GoogleFragment extends Fragment {
             mapFragment.getMapAsync(callback);
         }
     }
-
-
 
 
 }

@@ -25,6 +25,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.proyecto_final_by_jordi.BD.Datasource;
 import com.example.proyecto_final_by_jordi.Filtro;
+import com.example.proyecto_final_by_jordi.GetSetGoogleMaps;
 import com.example.proyecto_final_by_jordi.R;
 import com.example.proyecto_final_by_jordi.ui.Gestion.CrearEditarMaquina;
 import com.example.proyecto_final_by_jordi.ui.Gestion.GestionFragment;
@@ -205,7 +206,31 @@ public class ZonesFragment extends Fragment {
 
     private void GmapsZona(long id){
 
-        String  IDZonas = String.valueOf((int) id);
+/*
+         String Poblacion = "";
+         String NumSerie = "";
+         String Colorr = "";
+         String Tipo = "";
+         Cursor GoogleZona = bd.GoogleMapsmaquina(id);
+         ArrayList<GetSetGoogleMaps> Marca = new ArrayList<GetSetGoogleMaps>();
+         GetSetGoogleMaps Marcas;
+
+          while (GoogleZona.moveToNext()) {
+
+                        Poblacion = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.POBLACIO));
+                        NumSerie = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.NUMEROSERIE));
+                        Tipo = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.NOMMAQUINA));
+                        Colorr = GoogleZona.getString(GoogleZona.getColumnIndexOrThrow(Datasource.COLOR_TIPUS));
+
+                        Marcas = new GetSetGoogleMaps(Poblacion, NumSerie, Tipo, Colorr);
+
+                        Marca.add(Marcas);
+
+                    }
+
+ */
+
+        String IDZonas = String.valueOf(id);
         Bundle bundle = new Bundle();
         bundle.putString("idZ", IDZonas);
 

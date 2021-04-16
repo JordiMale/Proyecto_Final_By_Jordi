@@ -389,30 +389,29 @@ public class CrearEditarMaquina extends AppCompatActivity {
             RadioButton RadioTurquesa_Alert = (RadioButton)v.findViewById(R.id.RadioTurquesa_Alert);
 
             String GuardarRadio_Alert = "";
-            if (RadioRojo_Alert.isChecked()){
-                GuardarRadio_Alert = "Rojo";
+        if (RadioRojo_Alert.isChecked()){
+            GuardarRadio_Alert = "#F9433B";
+        }else{
+            if(RadioAzul_Alert.isChecked()){
+                GuardarRadio_Alert = "#00B4FF";
             }else{
-                if(RadioAzul_Alert.isChecked()){
-                    GuardarRadio_Alert = "Azul";
+                if(RadioAmarillo_Alert.isChecked()){
+                    GuardarRadio_Alert = "#F0FB35";
                 }else{
-                    if(RadioAmarillo_Alert.isChecked()){
-                        GuardarRadio_Alert = "Amarillo";
+                    if(RadioNaranja_Alert.isChecked()){
+                        GuardarRadio_Alert = "#FF9F4F";
                     }else{
-                        if(RadioNaranja_Alert.isChecked()){
-                            GuardarRadio_Alert = "Naranja";
+                        if(RadioRosa_Alert.isChecked()){
+                            GuardarRadio_Alert = "#FB3DE9";
                         }else{
-                            if(RadioRosa_Alert.isChecked()){
-                                GuardarRadio_Alert = "Rosa";
+                            if(RadioLila_Alert.isChecked()){
+                                GuardarRadio_Alert = "#C74CFF";
                             }else{
-                                if(RadioLila_Alert.isChecked()){
-                                    GuardarRadio_Alert = "Lila";
+                                if(RadioVerde_Alert.isChecked()){
+                                    GuardarRadio_Alert = "#70FF4C";
                                 }else{
-                                    if(RadioVerde_Alert.isChecked()){
-                                        GuardarRadio_Alert = "Verde";
-                                    }else{
-                                        if(RadioTurquesa_Alert.isChecked()){
-                                            GuardarRadio_Alert = "Turquesa";
-                                        }
+                                    if(RadioTurquesa_Alert.isChecked()){
+                                        GuardarRadio_Alert = "#4CFFDA";
                                     }
                                 }
                             }
@@ -420,6 +419,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
                     }
                 }
             }
+        }
 
 
             String Nom_Tipo_Alert = EtNom_Tipo_Alert.getText().toString();

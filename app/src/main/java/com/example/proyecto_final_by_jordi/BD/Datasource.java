@@ -122,7 +122,7 @@ public class Datasource {
 
     //Sirve para el mapa.
     public Cursor GoogleMapsmaquina(long id){
-        final String MY_QUERY = "SELECT Poblacion,NumSerie,TiM.NomMaquina,TiM.Color FROM Maquines AS Maqui  INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id INNER JOIN ZonesM AS ZoM ON Maqui.Zona = ZoM._id WHERE Maqui.Zona = " + id;
+        final String MY_QUERY = "SELECT Poblacio,NumeSerie,TiM.NomMaquina,TiM.Color FROM Maquines AS Maqui  INNER JOIN Tipo_Maquines AS TiM ON Maqui.Tipo = TiM._id INNER JOIN ZonesM AS ZoM ON Maqui.Zones = ZoM._id WHERE Maqui.Zones = " + id;
                 return dbR.rawQuery(MY_QUERY,null);
     }
 

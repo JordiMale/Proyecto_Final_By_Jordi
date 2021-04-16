@@ -16,6 +16,8 @@ import android.graphics.Color;
 import com.example.proyecto_final_by_jordi.BD.Datasource;
 import com.example.proyecto_final_by_jordi.GetSetGoogleMaps;
 import com.example.proyecto_final_by_jordi.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -33,9 +35,10 @@ import java.util.List;
 
 public class GoogleFragment extends Fragment {
 
-    String[] ArrayPoblacion = new String[4];
+    String[] ArrayPoblacion ;
+    private FusedLocationProviderClient fusedLocationClient;
 
-    private Datasource bd;
+    public Datasource bd;
     String Poblacion = "";
     String NumSerie = "";
     String Colorr = "";
@@ -43,8 +46,10 @@ public class GoogleFragment extends Fragment {
 
     List<Address> Dire = null;
     int Resultado = 1;
-    String DeZona = "";
+    String DeZona = null;
+    long Aux = 0;
     ArrayList<GetSetGoogleMaps> Marca = new ArrayList<GetSetGoogleMaps>();
+
 
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -69,10 +74,14 @@ public class GoogleFragment extends Fragment {
 
                 LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
                 googleMap.addMarker(new MarkerOptions().position(Posicion).icon(getMarkerIcon(Colorr)).title("Tipo maquina: " + Tipo + ", Numero de serie: " + NumSerie));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Posicion, 10));
+
             } else {
                 if (DeZona != null) {
-                    Cursor GoogleZona = bd.GoogleMapsmaquina(Integer.parseInt(DeZona));
+                    Aux = Long.parseLong(DeZona);
+                    Cursor GoogleZona = bd.GoogleMapsmaquina(Aux);
+
+
                     GetSetGoogleMaps Marcas;
 
                     while (GoogleZona.moveToNext()) {
@@ -86,7 +95,8 @@ public class GoogleFragment extends Fragment {
 
                         Marca.add(Marcas);
 
-
+                    }
+                    
                         for(int i = 0; i < Marca.size(); i++){
 
                             try {
@@ -97,34 +107,31 @@ public class GoogleFragment extends Fragment {
 
                             LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
                             googleMap.addMarker(new MarkerOptions().position(Posicion).icon(getMarkerIcon(Marca.get(i).getColor())).title("Tipo maquina: " + Marca.get(i).getNom_Tipo() + ", Numero de serie: " + Marca.get(i).getNum_Serie()));
-                            googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Posicion, 10));
                         }
-
-
-
-
-                    }
-
                 }
             }
 
 
-          /*
+            /*
+                try {
+                    Dire = Geoco.getFromLocationName(Poblacion, Resultado);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            try {
-                Dire = Geoco.getFromLocationName(Poblacion, Resultado);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
-            googleMap.addMarker(new MarkerOptions().position(Posicion).title("Poblaicón: " + Poblacion));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
-
-           */
-
-
+                LatLng Posicion = new LatLng(Dire.get(0).getLatitude(), Dire.get(0).getLongitude());
+                //googleMap.addMarker(new MarkerOptions().position(Posicion).title("Poblaicón: " + Poblacion));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(Posicion));
+            */
         }
+
+
+
+
+
+
+
 
     };
 
@@ -139,6 +146,8 @@ public class GoogleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        bd = new Datasource(getContext());
         return inflater.inflate(R.layout.fragment_google, container, false);
 
     }
@@ -148,14 +157,15 @@ public class GoogleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+
         if (getArguments() != null) {
+            ArrayPoblacion= new String[4];
             ArrayPoblacion = getArguments().getStringArray("id");
             DeZona = getArguments().getString("idZ");
+        }else{
+            Poblacion = "Madrid";
         }
-
-
-        Poblacion = "Toledo";
-
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);

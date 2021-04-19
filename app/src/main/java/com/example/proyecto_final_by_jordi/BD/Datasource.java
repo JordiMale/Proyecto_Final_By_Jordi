@@ -126,8 +126,6 @@ public class Datasource {
                 return dbR.rawQuery(MY_QUERY,null);
     }
 
-
-
     //Aqui actualizamos los datos.
     public boolean Update(long id, String Nom_Maquina, String Adreça_Maquina, int CPo, String Poblacion, String Telefono, String Gmail, String Numero_Serie, String Data, int Tipo, int Zona) {
         ContentValues values = new ContentValues();

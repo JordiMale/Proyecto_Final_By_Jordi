@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
-public class CrearEditarMaquina extends AppCompatActivity {
+public class    CrearEditarMaquina extends AppCompatActivity {
 
 
     private Datasource bd;
@@ -68,13 +68,11 @@ public class CrearEditarMaquina extends AppCompatActivity {
     ArrayList<Tipo> TipoList;
     ArrayList<String> ListaTipo;
     ArrayAdapter<String> AdaperTipo;
-    ArrayList<Integer> IntAuxTipo;
     ArrayList<String>ListaTipoFinalEditar;
 
     ArrayList<Zona> ZonaList;
     ArrayList<String> ListaZona;
     ArrayAdapter<String> AdaperZona;
-    ArrayList<Integer> IntAuxZona;
     ArrayList<String>ListaZonaFinalEditar;
 
     Button BtnCancelar;
@@ -96,12 +94,10 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         TipoList = new ArrayList<Tipo>();
         ListaTipo = new ArrayList<String>();
-        IntAuxTipo = new ArrayList<Integer>();
         ListaTipoFinalEditar = new ArrayList<String>();
 
         ZonaList = new ArrayList<Zona>();
         ListaZona = new ArrayList<String>();
-        IntAuxZona = new ArrayList<Integer>();
         ListaZonaFinalEditar = new ArrayList<String>();
 
 
@@ -493,6 +489,7 @@ public class CrearEditarMaquina extends AppCompatActivity {
 
         final EditText EtNom_Maquina = findViewById(R.id.Edit_text_Nombre_Cliente);
         EtNom_Maquina.setText(Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.NOM)));
+        String ti = String.valueOf(EtNom_Maquina);
 
         final EditText EtAdreça_Maquina = findViewById(R.id.Edit_Text_Adreça);
         EtAdreça_Maquina.setText(Cursor_Maquina.getString(Cursor_Maquina.getColumnIndex(Datasource.ADREÇA)));

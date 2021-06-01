@@ -94,8 +94,8 @@ public class TipusFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_tipus, container, false);
         bd = new Datasource(getContext());
 
-        setHasOptionsMenu(true);
 
+        setHasOptionsMenu(true);
         /*
         btn_Ir_Crear_Tipo = v.findViewById(R.id.btn_Tipo);
 

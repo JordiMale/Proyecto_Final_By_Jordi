@@ -30,7 +30,7 @@ public class Helper extends SQLiteOpenHelper {
                         "NumeSerie TEXT UNIQUE NOT NULL," +
                         "Data TEXT," +
                         "Tipo INTEGER NOT NULL," +
-                        "Zones INTEGER NOT NULL," +
+                        "Zones INTEGER  NOT NULL," +
                         "FOREIGN KEY(Tipo) REFERENCES Tipo_Maquines(_id)," +
                         "FOREIGN KEY(Zones) REFERENCES ZonesM(_id)" + ")";
 
@@ -42,6 +42,8 @@ public class Helper extends SQLiteOpenHelper {
                 "CREATE TABLE Tipo_Maquines (_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "NomMaquina TEXT UNIQUE NOT NULL," +
                         "Color TEXT )";
+
+
 
 
         db.execSQL(CREATE_ZONES);
